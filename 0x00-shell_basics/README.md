@@ -1,1 +1,1 @@
-readme for shell basics directory
+0. Where am I
