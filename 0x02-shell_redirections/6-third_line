@@ -1,2 +1,0 @@
-echo #!/bin/bash
-echo 'head -n 3 iacta | tail -n 1'

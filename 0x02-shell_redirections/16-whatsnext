@@ -1,2 +1,0 @@
-echo #!/bin/bash
-echo 'grep root /etc/passwd --after-contexts=3'
