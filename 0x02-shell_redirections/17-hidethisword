@@ -1,2 +1,1 @@
-echo #!/bin/bash
-echo 'grep -v bin /ect/passwd'
+grep -v bin /etc/passwd

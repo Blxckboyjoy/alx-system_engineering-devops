@@ -1,2 +1,1 @@
-echo #!/bin/bash
-echo 'tr Ac Ze'
+tr Ac Ze

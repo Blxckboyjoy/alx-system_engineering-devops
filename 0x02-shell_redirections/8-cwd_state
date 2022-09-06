@@ -1,2 +1,1 @@
-echo #!/bin/bash
-echo 'ls -ls >ls_cwd_content'
+ls -ls > ls_cwd_content 
