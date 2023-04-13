@@ -1,0 +1,14 @@
+A Behind-The-Scenes Look at How Your Browser Connects to Google
+When you type https://www.google.com into your browser and press enter, a complex series of actions take place behind the scenes to bring you to the Google homepage. Here’s a brief overview of what happens.
+
+DNS request: Your computer first sends a request to a Domain Name System (DNS) server to resolve the IP address associated with the domain name “www.google.com." This server acts as a phone book for the internet, converting the domain name into an IP address.
+TCP/IP: Once the IP address is obtained, your browser initiates a Transmission Control Protocol/Internet Protocol (TCP/IP) connection to that IP address. This process establishes a communication link between your computer and Google’s servers.
+Firewall: If you are behind a firewall, the request is first filtered through it to ensure that it meets certain criteria before being forwarded to the web server.
+HTTPS/SSL: Once the connection is established, the browser and the server negotiate a Secure Sockets Layer (SSL) connection, now referred to as Transport Layer Security (TLS) to encrypt the data sent between them, ensuring that no one can intercept the data being transmitted.
+Load-balancer: To ensure that the server doesn’t get overloaded with too many requests, the request is first directed to a load-balancer, which distributes the request to the least busy server in a cluster of servers.
+Web server: The web server receives the request, retrieves the requested files, and sends them back to the browser in the form of an HTTP response. Google’s web server could be Apache or Nginx, two popular web servers.
+Application server: If the request requires any dynamic content, such as personalized search results, it is sent to an application server, which processes the request and generates the dynamic content.
+Database: If the application server requires any information from a database to complete the request, it retrieves that information from a database server. This could include data such as search history, preferences, or personal information.
+Once all of these steps are completed, the requested webpage is displayed on your browser. While this process may seem complex, it happens in a matter of seconds, allowing you to access information from around the world with just a few clicks of your mouse.
+
+Sources: https://www.cloudflare.com/learning/dns/what-is-dns/ https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_database
