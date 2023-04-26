@@ -1,30 +1,31 @@
-import requests
+#!/usr/bin/python3
+""" Python script to export data in the JSON format."""
 import json
+import requests
+import sys
 
-# Make a GET request to the API endpoint
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
 
-if response.status_code != 200:
-    print(f"Error: {response.status_code}")
-    sys.exit(1)
+if __name__ == "__main__":
+    url = 'https://jsonplaceholder.typicode.com/'
 
-# Parse the JSON response
-todos = response.json()
+    user = '{}users'.format(url)
+    res = requests.get(user)
+    json_o = res.json()
+    d_task = {}
+    for user in json_o:
+        name = user.get('username')
+        userid = user.get('id')
+        todos = '{}todos?userId={}'.format(url, userid)
+        res = requests.get(todos)
+        tasks = res.json()
+        l_task = []
+        for task in tasks:
+            dict_task = {"username": name,
+                         "task": task.get('title'),
+                         "completed": task.get('completed')}
+            l_task.append(dict_task)
 
-# Group tasks by user ID
-tasks_by_user = {}
-for todo in todos:
-    if todo["userId"] not in tasks_by_user:
-        tasks_by_user[todo["userId"]] = []
-    tasks_by_user[todo["userId"]].append({"username": todo["title"], "task": todo["title"], "completed": todo["completed"]})
-
-# Export data in JSON format
-data = {}
-for user_id, tasks in tasks_by_user.items():
-    response = requests.get(f"https://jsonplaceholder.typicode.com/users/{user_id}")
-    employee_name = response.json()["name"]
-    data[user_id] = [{"username": employee_name, "task": task["task"], "completed": task["completed"]} for task in tasks]
-
-filename = "todo_all_employees.json"
-with open(filename, mode="w") as file:
-    json.dump(data, file)
+        d_task[str(userid)] = l_task
+    filename = 'todo_all_employees.json'
+    with open(filename, mode='w') as f:
+        json.dump(d_task, f)
